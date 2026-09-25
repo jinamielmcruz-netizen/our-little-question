@@ -21,13 +21,7 @@ html {
 
 /* Page background */
 body {
-  background:
-    linear-gradient(
-      rgba(255, 217, 229, 0.55),
-      rgba(255, 217, 229, 0.55)
-    ),
-    url("background2.jpg") center / cover fixed;
-
+  background: #ffd6e5;
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
 
@@ -37,12 +31,10 @@ body {
   min-height: 100vh;
   height: auto;
 
-  /* Allow scrolling */
+  display: block;
+
   overflow-x: hidden;
   overflow-y: auto;
-
-  /* Normal page layout */
-  display: block;
 
   position: relative;
 }
