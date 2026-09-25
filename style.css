@@ -26,7 +26,7 @@ body {
       rgba(255, 217, 229, 0.55),
       rgba(255, 217, 229, 0.55)
     ),
-    url("background(1).jpg") center / cover fixed;
+    url("background2.jpg") center / cover fixed;
 
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
