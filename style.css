@@ -1,0 +1,66 @@
+/* Change these values to recolor the whole design quickly. */
+:root {
+  --pink: #b44468;
+  --dark-pink: #dc6790;
+  --cream: #fff9f5;
+  --ink: #3b1c2b;
+}
+
+/* The asterisk selects every element and makes sizing easier to predict. */
+* { box-sizing: border-box; }
+
+/* This styles the page behind the proposal card. */
+body {
+  align-items: center; /* Centers the card vertically. */
+  background: linear-gradient(rgba(255, 217, 229, 0.55), rgba(255, 217, 229, 0.55)), url("background.jpg") center / cover fixed;
+  color: var(--ink);
+  display: flex;
+  font-family: Georgia, "Times New Roman", serif;
+  justify-content: center; /* Centers the card horizontally. */
+  margin: 0;
+  min-height: 100vh; /* Makes the background fill the screen. */
+  overflow: hidden; /* Hides hearts after they float off the page. */
+  padding: 24px;
+}
+
+/* The main proposal panel. */
+.card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  box-shadow: 0 22px 60px rgba(115, 24, 62, 0.22);
+  max-width: 620px;
+  padding: 48px 38px;
+  position: relative;
+  text-align: center;
+  z-index: 1; /* Keeps the card above the floating hearts. */
+}
+
+.eyebrow { color: var(--pink); font-family: Arial, sans-serif; font-size: 0.72rem; font-weight: bold; letter-spacing: 0.16em; margin: 0; }
+.hero-heart { animation: pulse 1.8s infinite; color: var(--pink); font-size: 4.5rem; line-height: 1; margin: 14px 0 8px; }
+h1 { font-size: clamp(2rem, 6vw, 3.4rem); margin: 0 0 16px; }
+h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); margin: 34px 0 18px; }
+.message, #yes-screen p, #no-screen p { font-size: 1.08rem; line-height: 1.65; margin: 0 auto; max-width: 500px; }
+
+/* Put the two answer buttons next to each other. */
+.buttons { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+button { border: 0; border-radius: 999px; cursor: pointer; font: bold 1rem Arial, sans-serif; padding: 14px 30px; transition: transform 0.2s, box-shadow 0.2s; }
+button:hover { box-shadow: 0 8px 18px rgba(115, 24, 62, 0.2); transform: translateY(-3px); }
+.yes-button { background: var(--pink); color: white; }
+.no-button { background: #f4dbe4; color: var(--dark-pink); }
+.date-note { color: var(--dark-pink); font-weight: bold; margin-top: 22px !important; }
+
+/* JavaScript adds this class to hide a section. */
+.hidden { display: none; }
+
+/* A heart made by JavaScript gets this style. */
+.floating-heart { animation: float-up linear forwards; color: var(--pink); position: fixed; bottom: -40px; z-index: 0; }
+
+/* Animation for the large heart. */
+@keyframes pulse { 50% { transform: scale(1.12); } }
+
+/* Animation that moves small hearts upward and fades them out. */
+@keyframes float-up { to { opacity: 0; transform: translateY(-110vh) rotate(30deg); } }
+
+/* Smaller spacing for narrow phone screens. */
+@media (max-width: 480px) { .card { padding: 36px 22px; } }

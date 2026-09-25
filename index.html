@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- This tells the browser to use modern HTML rules. -->
+<html lang="en">
+  <head>
+    <!-- UTF-8 lets the page show hearts, emojis, and normal text correctly. -->
+    <meta charset="UTF-8" />
+    <!-- This makes the layout fit phones as well as computers. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Change this text: it appears in the browser tab. -->
+    <title>A little question for you 💌</title>
+    <!-- This connects this HTML page to our CSS design file. -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Decorative hearts are created by JavaScript and go inside this container. -->
+    <div id="heart-container" aria-hidden="true"></div>
+
+    <!-- "card" is the centered box that holds the proposal. -->
+    <main class="card">
+      <!-- Replace the emoji with an image later, if you like. -->
+      <p class="eyebrow">FOR MY MAKULIT AND JOYFUL PERSON</p>
+      <div class="hero-heart" aria-hidden="true">♥</div>
+
+      <!-- Change these two lines to make the proposal sound like you. -->
+      <h1>Hey to, <span id="partner-name">my favorite person everyday</span>…</h1>
+      <p class="message">
+        Every day with you feels a little brighter. I have one question that
+        would make my day unforgettable.
+      </p>
+
+      <!-- This is the question shown before either answer is picked. -->
+      <section id="question-screen">
+        <h2>Will you be my girlfriend? 💗</h2>
+        <div class="buttons" aria-label="Your answer">
+          <!-- JavaScript listens for a click on this Yes button. -->
+          <button id="yes-button" class="button yes-button">Yes!</button>
+          <!-- JavaScript listens for a click on this No button too. -->
+          <button id="no-button" class="button no-button">Not yet</button>
+        </div>
+      </section>
+
+      <!-- This starts hidden; JavaScript reveals it after a Yes click. -->
+      <section id="yes-screen" class="hidden" aria-live="polite">
+        <h2>You just made me the happiest babe, I LOVE YOU! ✨</h2>
+        <!-- Replace "your-image.jpg" with the path or filename of your image. -->
+        <img
+          class="love-image"
+          src="qrcode.jpg"
+          alt="Scan This QR Code to see my surprise for you!"
+        />
+        <p>I can’t wait to make more beautiful memories with you.</p>
+        <!-- Change the plan below to your real date, place, or surprise. -->
+        <p class="date-note">Now Scan this QR Code hehe 💌</p>
+      </section>
+
+      <!-- This is a gentle, respectful response if they choose Not yet. -->
+      <section id="no-screen" class="hidden" aria-live="polite">
+        <h2>That’s completely okay. 🤍</h2>
+        <p>Thank you for being honest. I value you and our connections.</p>
+      </section>
+    </main>
+
+    <!-- This connects this HTML page to our JavaScript behavior file. -->
+    <script src="script.js"></script>
+  </body>
+</html>
