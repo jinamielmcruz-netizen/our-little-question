@@ -17,16 +17,10 @@ const heartContainer = document.getElementById("heart-container");
 // ==========================================
 
 yesButton.addEventListener("click", () => {
-
-  // Hide the question
   questionScreen.classList.add("hidden");
-
-  // Show the happy screen
   yesScreen.classList.remove("hidden");
 
-  // Start the celebration
   celebrate();
-
 });
 
 
@@ -34,22 +28,49 @@ yesButton.addEventListener("click", () => {
 // NOT YET BUTTON
 // ==========================================
 
-noButton.addEventListener("click", () => {
+// Move the button when the mouse gets close to it
+noButton.addEventListener("mouseenter", moveNoButton);
 
-  // Hide the question
-  questionScreen.classList.add("hidden");
-
-  // Show the "not yet" message
-  noScreen.classList.remove("hidden");
-
-  // Create gentle hearts
-  createSoftHearts();
-
+// Also move it when clicked/tapped
+noButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  moveNoButton();
 });
 
 
+// Move the button randomly around the screen
+function moveNoButton() {
+
+  const buttonWidth = noButton.offsetWidth;
+  const buttonHeight = noButton.offsetHeight;
+
+  // Keep the button inside the visible screen
+  const maxX = window.innerWidth - buttonWidth - 20;
+  const maxY = window.innerHeight - buttonHeight - 20;
+
+  // Random position
+  const randomX = Math.max(
+    20,
+    Math.random() * maxX
+  );
+
+  const randomY = Math.max(
+    20,
+    Math.random() * maxY
+  );
+
+  // Make it move independently from the card
+  noButton.style.position = "fixed";
+
+  noButton.style.left = `${randomX}px`;
+  noButton.style.top = `${randomY}px`;
+
+  noButton.style.zIndex = "1000";
+}
+
+
 // ==========================================
-// CREATE FLOATING HEART
+// FLOATING HEARTS
 // ==========================================
 
 function createHeart() {
@@ -60,21 +81,17 @@ function createHeart() {
 
   heart.textContent = "♥";
 
-  // Random horizontal position
-  heart.style.left = `${Math.random() * 100}vw`;
+  heart.style.left =
+    `${Math.random() * 100}vw`;
 
-  // Random heart size
   heart.style.fontSize =
     `${16 + Math.random() * 24}px`;
 
-  // Random animation speed
   heart.style.animationDuration =
     `${5 + Math.random() * 4}s`;
 
-  // Add heart to page
   heartContainer.appendChild(heart);
 
-  // Remove after animation
   setTimeout(() => {
     heart.remove();
   }, 10000);
@@ -87,7 +104,7 @@ function createHeart() {
 
 function celebrate() {
 
-  // Create lots of floating hearts
+  // Floating hearts
   for (let number = 0; number < 40; number++) {
 
     setTimeout(() => {
@@ -96,7 +113,7 @@ function celebrate() {
 
   }
 
-  // Heart explosion from center
+  // Heart explosion
   for (let number = 0; number < 25; number++) {
 
     setTimeout(() => {
@@ -107,7 +124,6 @@ function celebrate() {
 
   // Sparkles
   createSparkles();
-
 }
 
 
@@ -123,11 +139,9 @@ function createCenterHeart() {
 
   heart.textContent = "♥";
 
-  // Start from center of screen
   heart.style.left = "50%";
   heart.style.top = "50%";
 
-  // Random explosion direction
   const x =
     (Math.random() - 0.5) * 500;
 
@@ -146,7 +160,6 @@ function createCenterHeart() {
 
   heartContainer.appendChild(heart);
 
-  // Remove after animation
   setTimeout(() => {
     heart.remove();
   }, 1500);
@@ -182,7 +195,6 @@ function createSparkles() {
           )
         ];
 
-      // Random screen position
       sparkle.style.left =
         `${Math.random() * 100}vw`;
 
@@ -191,7 +203,6 @@ function createSparkles() {
 
       heartContainer.appendChild(sparkle);
 
-      // Remove after animation
       setTimeout(() => {
         sparkle.remove();
       }, 1800);
@@ -202,41 +213,7 @@ function createSparkles() {
 
 
 // ==========================================
-// SOFT HEARTS FOR "NOT YET"
-// ==========================================
-
-function createSoftHearts() {
-
-  for (let number = 0; number < 8; number++) {
-
-    setTimeout(() => {
-
-      const heart =
-        document.createElement("span");
-
-      heart.className = "soft-heart";
-
-      heart.textContent = "♡";
-
-      heart.style.left =
-        `${20 + Math.random() * 60}vw`;
-
-      heartContainer.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 4000);
-
-    }, number * 250);
-
-  }
-
-}
-
-
-// ==========================================
 // BACKGROUND HEARTS
 // ==========================================
 
-// Create one heart every 2.5 seconds
 setInterval(createHeart, 2500);
