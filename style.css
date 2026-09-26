@@ -516,4 +516,20 @@ button:hover {
   .love-image {
     width: min(250px, 100%);
   }
+   /* ==========================================
+   RUNAWAY "NOT YET" BUTTON
+========================================== */
+
+.no-button {
+  position: relative;
+  transition:
+    left 0.25s ease,
+    top 0.25s ease,
+    transform 0.2s ease;
+  z-index: 1000;
+}
+
+.no-button:hover {
+  transform: scale(1.05);
+}
 }
