@@ -1,17 +1,25 @@
-/* Change these values to recolor the whole design quickly. */
+/* ==========================================
+   COLORS
+========================================== */
+
 :root {
   --pink: #b44468;
   --dark-pink: #dc6790;
-  --cream: #fff9f5;
+  --baby-pink: #ffd6e5;
+  --soft-pink: #f4dbe4;
+  --light-pink: #fff3f7;
   --ink: #3b1c2b;
 }
 
-/* Make sizing predictable */
+
+/* ==========================================
+   BASIC PAGE SETUP
+========================================== */
+
 * {
   box-sizing: border-box;
 }
 
-/* Force the document itself to be scrollable */
 html {
   min-height: 100%;
   height: auto;
@@ -19,10 +27,11 @@ html {
   overflow-y: auto;
 }
 
-/* Page background */
 body {
-  background: #ffd6e5;
+  background: var(--baby-pink);
+
   color: var(--ink);
+
   font-family: Georgia, "Times New Roman", serif;
 
   margin: 0;
@@ -39,12 +48,20 @@ body {
   position: relative;
 }
 
-/* The main proposal panel */
+
+/* ==========================================
+   MAIN CARD
+========================================== */
+
 .card {
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.88);
+
+  border: 1px solid rgba(255, 255, 255, 0.95);
+
   border-radius: 28px;
-  box-shadow: 0 22px 60px rgba(115, 24, 62, 0.22);
+
+  box-shadow:
+    0 22px 60px rgba(115, 24, 62, 0.22);
 
   width: min(620px, 100%);
   max-width: 620px;
@@ -54,123 +71,449 @@ body {
   padding: 48px 38px;
 
   position: relative;
+
   text-align: center;
+
   z-index: 1;
 }
 
+
+/* ==========================================
+   TOP TEXT
+========================================== */
+
 .eyebrow {
   color: var(--pink);
+
   font-family: Arial, sans-serif;
+
   font-size: 0.72rem;
+
   font-weight: bold;
+
   letter-spacing: 0.16em;
+
   margin: 0;
 }
 
+
+/* ==========================================
+   MAIN HEART
+========================================== */
+
 .hero-heart {
   animation: pulse 1.8s infinite;
+
   color: var(--pink);
+
   font-size: 4.5rem;
+
   line-height: 1;
+
   margin: 14px 0 8px;
+
+  text-shadow:
+    0 5px 15px rgba(180, 68, 104, 0.25);
 }
+
+
+/* ==========================================
+   HEADINGS
+========================================== */
 
 h1 {
   font-size: clamp(2rem, 6vw, 3.4rem);
+
   margin: 0 0 16px;
 }
 
 h2 {
   font-size: clamp(1.5rem, 4vw, 2.2rem);
+
   margin: 34px 0 18px;
 }
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
 
 .message,
 #yes-screen p,
 #no-screen p {
   font-size: 1.08rem;
+
   line-height: 1.65;
+
   margin: 0 auto;
+
   max-width: 500px;
 }
 
-/* Buttons */
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
 .buttons {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 14px;
+
   justify-content: center;
+
+  margin-top: 10px;
 }
 
 button {
   border: 0;
+
   border-radius: 999px;
+
   cursor: pointer;
+
   font: bold 1rem Arial, sans-serif;
+
   padding: 14px 30px;
-  transition: transform 0.2s, box-shadow 0.2s;
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 button:hover {
-  box-shadow: 0 8px 18px rgba(115, 24, 62, 0.2);
+  box-shadow:
+    0 8px 18px rgba(115, 24, 62, 0.2);
+
   transform: translateY(-3px);
 }
 
 .yes-button {
   background: var(--pink);
+
   color: white;
+
+  box-shadow:
+    0 5px 15px rgba(180, 68, 104, 0.25);
 }
 
 .no-button {
-  background: #f4dbe4;
+  background: var(--soft-pink);
+
   color: var(--dark-pink);
 }
+
+
+/* ==========================================
+   QR CODE
+========================================== */
+
+.love-image {
+  display: block;
+
+  width: min(280px, 100%);
+
+  height: auto;
+
+  margin: 24px auto;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 30px rgba(115, 24, 62, 0.18);
+}
+
+
+/* ==========================================
+   DATE NOTE
+========================================== */
 
 .date-note {
   color: var(--dark-pink);
+
   font-weight: bold;
+
   margin-top: 22px !important;
 }
 
-/* Hidden screens */
+
+/* ==========================================
+   HIDDEN SCREENS
+========================================== */
+
 .hidden {
   display: none;
 }
 
-/* Floating hearts */
-.floating-heart {
-  animation: float-up linear forwards;
-  color: var(--pink);
-  position: fixed;
-  bottom: -40px;
-  z-index: 0;
 
-  /* Prevent hearts from affecting page width */
-  pointer-events: none;
+/* ==========================================
+   SUCCESS HEART
+========================================== */
+
+.success-heart {
+  color: var(--pink);
+
+  font-size: 4rem;
+
+  margin: 10px 0;
+
+  animation:
+    successPulse 1.2s ease-in-out infinite;
+
+  text-shadow:
+    0 5px 20px rgba(180, 68, 104, 0.3);
 }
 
-/* Large heart animation */
+@keyframes successPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+
+/* ==========================================
+   NOT-YET HEART
+========================================== */
+
+.soft-heart-display {
+  color: #e8a5ba;
+
+  font-size: 4rem;
+
+  margin: 10px 0;
+
+  animation:
+    softPulse 2s ease-in-out infinite;
+}
+
+@keyframes softPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+
+/* ==========================================
+   FLOATING HEARTS
+========================================== */
+
+.floating-heart {
+  animation: float-up linear forwards;
+
+  color: var(--pink);
+
+  position: fixed;
+
+  bottom: -40px;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+@keyframes float-up {
+
+  to {
+    opacity: 0;
+
+    transform:
+      translateY(-110vh)
+      rotate(30deg);
+  }
+}
+
+
+/* ==========================================
+   HEART BURST
+========================================== */
+
+.center-heart {
+  position: fixed;
+
+  color: var(--pink);
+
+  font-size: 28px;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  z-index: 10;
+
+  animation:
+    heartBurst 1.5s ease-out forwards;
+}
+
+@keyframes heartBurst {
+
+  0% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.4);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      scale(1.4);
+  }
+}
+
+
+/* ==========================================
+   SOFT HEARTS
+========================================== */
+
+.soft-heart {
+  position: fixed;
+
+  bottom: -30px;
+
+  color: #e8a5ba;
+
+  font-size: 30px;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  z-index: 2;
+
+  animation:
+    softFloat 4s ease-out forwards;
+}
+
+@keyframes softFloat {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(0)
+      scale(0.6);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateY(-70vh)
+      scale(1.2);
+  }
+}
+
+
+/* ==========================================
+   SPARKLES
+========================================== */
+
+.sparkle {
+  position: fixed;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  z-index: 20;
+
+  font-size: 24px;
+
+  animation:
+    sparkleAnimation 1.8s ease-out forwards;
+}
+
+@keyframes sparkleAnimation {
+
+  0% {
+    opacity: 0;
+
+    transform: scale(0);
+  }
+
+  30% {
+    opacity: 1;
+
+    transform: scale(1.3);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(0.3)
+      translateY(-40px);
+  }
+}
+
+
+/* ==========================================
+   MAIN HEART PULSE
+========================================== */
+
 @keyframes pulse {
+
   50% {
     transform: scale(1.12);
   }
 }
 
-/* Floating heart animation */
-@keyframes float-up {
-  to {
-    opacity: 0;
-    transform: translateY(-110vh) rotate(30deg);
-  }
-}
 
-/* Phone */
+/* ==========================================
+   MOBILE
+========================================== */
+
 @media (max-width: 480px) {
+
   body {
     padding: 16px;
   }
 
   .card {
     padding: 36px 22px;
+  }
+
+  .hero-heart {
+    font-size: 4rem;
+  }
+
+  .success-heart {
+    font-size: 3.5rem;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .love-image {
+    width: min(250px, 100%);
   }
 }
